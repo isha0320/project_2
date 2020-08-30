@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>
+Calculater:
+</title>
+<style>
+ .a{
+    margin:5;
+    padding:10;
+    border-width:2px;
+    border-color:black;
+    background-color:lightgrey;
+}
+#s{
+   margin:5;
+  padding:10;
+  border-width:2px;
+  border-color:black;
+  background-color:aqua;
+
+}
+#d{
+     border:2px solid lightgreen;
+}
+
+</style>
+<head>
+<body>
+<span><form name="forms" id="d">
+<input type="text" name="answer" id="s"></input>
+<br><br>
+<input type="button" class="a" value="9" onclick="forms.answer.value+='9' "></input>
+<input type="button" class="a"value="8" onclick="forms.answer.value+='8'"></input>
+<input type="button" class="a" value="7" onclick="forms.answer.value+='7'"></input>
+<input type="button"class="a" value="+" onclick="forms.answer.value+='+'"></input>
+<br><br>
+<input type="button" class="a" value="6" onclick="forms.answer.value+='6'"></input>
+<input type="button" class="a" value="5" onclick="form.answer.value+='5'"></input>
+<input type="button" class="a" value="4" onclick="form.answer.value+='4'"></input>
+<input type="button" class="a" value="-" onclick="forms.answer.value+='-'"></input>
+<br><br>
+
+<input type="button" class="a" value="3" onclick="forms.answer.value+='3'"></input>
+<input type="button" class="a" value="2" onclick="form.answer.value+='2'"></input>
+<input type="button" class="a" value="1" onclick="form.answer.value+='1'"></input>
+<input type="button" class="a" value="*" onclick="forms.answer.value+='*'"></input>
+<br><br>
+
+<input type="button" class="a" value="C" onclick="forms.answer.value+=''"></input>
+<input type="button" class="a" value="0" onclick="form.answer.value+='0'"></input>
+<input type="button" class="a" value="=" onclick="form.answer.value=eval(forms.answer.value)"></input>
+<input type="button" class="a" value="/" onclick="forms.answer.value+='/'"></input>
+<br><br>
+</forms></span>
+</body>
+</html>
