@@ -1,0 +1,49 @@
+<html>
+<head>
+	</head>
+	<body>
+		<script>
+			var choose = prompt("make a choice!");
+			if(choose==="stone")
+			{
+				document.write(choose);
+			}
+			else if(choose==="paper")
+			{
+				document.write(choose);
+
+			}
+			else if(choose==="scissors")
+			{
+				document.write(choose);
+
+			}
+
+			else
+			{
+               document.write("make a proper choice!");
+			}
+			var computer_choice=["stone","paper","scissors"];
+			var computer=computer_choice[Math.floor(Math.random()*3)];
+			document.write("<br>"+computer);
+			if(choose===computer)
+			{
+				document.write("<br>"+"it is a tie");
+			}
+			else 
+			{
+				if(choose==="paper" &&computer==="stone" ||choose==="stone" && computer==="scissors" || choose==="scissors" && computer==="paper")
+				{
+					document.write("<br>"+"it is a win!");
+				}
+				else
+				{
+					document.write("<br>"+"try next time!");
+				}
+			}
+
+		</script>
+		
+		
+	</body>
+</html>
