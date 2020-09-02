@@ -1,0 +1,137 @@
+<html>
+ <head>
+    <title>Calculator</title>
+    <style>
+        td
+        {
+            padding:0px;
+            margin:0px;
+        }
+        table
+        {
+            height:180px;
+            width:180px;
+            border:1px solid lightgrey;
+        }
+        .input_no
+        {
+            height:30px;
+            width:100%;
+            background:#ffff;
+            border:1px solid lightgrey;
+        }
+        button
+        {
+            width:35px;
+        }
+        .equal
+        {
+            height: 120px;
+            background-color:rgb(85 85 255);
+            border:1px solid lightgrey;
+            color:#ffff;
+        }
+        .operation
+        {
+            background:rgb(150 150 150);
+            border:1px solid rgb(150 150 150);
+        }
+        .number
+        {
+            background:rgb(250 250 250);
+            border:1px solid lightgrey;
+        }
+    </style>
+ </head>
+ <body>
+    <table cellpadding="0px" cellspacing="10px">
+        <tr>
+        <td colspan="4"><center><input type="text" disabled id="enter_no" class="input_no"></center></td></tr>
+        <tr>
+            <td><button class="operation" >+</button></td>
+            <td><button class="operation" >-</button></td>
+            <td><button class="operation">x</button></td>
+             <td><button class="operation">/</button></td>
+            
+        </tr>
+        <tr>
+            <td><button class="number">7</button></td>
+            <td><button class="number" >8</button></td>
+            <td><button class="number">9</button></td>
+            <td rowspan="4"> <button class="equal" id="equal_to"><center>=</center></button></td>
+        </tr>
+        <tr>
+            <td><button class="number">4</button></td>
+            <td><button class="number">5</button></td>
+            <td><button class="number">6</button></td>
+        </tr>
+        <tr>
+            <td><button class="number">1</button></td>
+            <td><button class="number">2</button></td>
+            <td><button class="number">3</button></td>
+        </tr>
+        <tr>
+            <td><button class="number">0</button></td>
+            <td><button class="number" >.</button></td>
+            <td><button  id="clear">C</button></td>
+        </tr>
+    </table>
+     <script>
+        var btn = document.querySelectorAll(".number");
+        var display = document.getElementById("enter_no");
+        var btn_clear = document.getElementById("clear");
+        var current_op = document.querySelectorAll(".operation");
+         var result = document.getElementById("equal_to");
+         for(let i=0;i<btn.length;i++)
+         {
+            const btnNum = btn[i];
+            btnNum.addEventListener("click",pressnum);
+         }
+         function pressnum()
+         {
+            var num= this.innerHTML;
+            display.value=display.value+num;
+         }
+         btn_clear.addEventListener("click",clearScreen);
+         function clearScreen()
+         {
+            display.value="";
+         }
+         for(let i=0;i<current_op.length;i++)
+         {
+            const Op = current_op[i];
+            Op.addEventListener("click",operation);
+         }
+         function operation()
+         {
+            var prev_number = parseInt(display.value);
+            var operater=this.innerHTML;
+            display.value=display.value+operater;
+         }
+         result.addEventListener("click",calculation); 
+         function calculation()
+         {
+            var current_number = parseInt(display.value);
+            var output;
+            switch(current_op)
+            {
+                case "+":
+                output = prev_number + current_number;
+                break;
+                case "-":
+                output = prev_number - current_number;
+                break;
+                case "/":
+                output = prev_number / current_number;
+                break;
+                case "*":
+                output= prev_number * current_number;
+                break;
+            }
+            display.value = output;
+
+         }
+    </script>
+</body>
+</html>
+
