@@ -1,0 +1,43 @@
+<html>
+  <head>
+     <title>growsari list</title>
+  </head>
+  <body>
+    <h2>growsari list</h2>
+    <form>
+      <input type = "text" id="input_item">
+    </form>
+    <h3>growsari items:</h3>
+    <ul></ul>
+    <button class="clear">Clear All</button>
+    <script>
+      var form = document.querySelector("form");
+      var input = document.getElementById("input_item");
+      var item = document.querySelector("ul");
+      var btn = document.querySelector(".clear");
+       form.addEventListener("submit",function_form);
+       function function_form(e)
+       {
+         e.preventDefault();
+         function_item(input.value);
+         input.value = "";
+
+       }
+       function function_item(text)
+       {
+        debugger;
+        var list = document.createElement("li");
+        list.textContent = text;
+        item.appendChild(list);
+       }
+       btn.addEventListener("click",function_clear);
+       function function_clear()
+       {
+        while(item.firstChild!= null)
+        {
+          item.removeChild(item.firstChild);
+        }
+       }
+    </script>
+  </body>
+</html>
