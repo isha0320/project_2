@@ -72,65 +72,74 @@
         </tr>
         <tr>
             <td><button class="number">0</button></td>
-            <td><button class="number" >.</button></td>
+            <td><button id="calc-decimal" >.</button></td>
             <td><button  id="clear">C</button></td>
         </tr>
     </table>
      <script>
-        var btn = document.querySelectorAll(".number");
-        var display = document.getElementById("enter_no");
-        var btn_clear = document.getElementById("clear");
-        var current_op = document.querySelectorAll(".operation");
+         var numBtn = document.querySelectorAll(".number");
+         var Display = document.getElementById("enter_no");
+         var clearBtn = document.getElementById("clear");
+         var operatorBtn = document.querySelectorAll(".operation");
          var result = document.getElementById("equal_to");
-         for(let i=0;i<btn.length;i++)
-         {
-            const btnNum = btn[i];
-            btnNum.addEventListener("click",pressnum);
+         var decimalBtn = document.getElementById("calc-decimal");
+         var currentNum = "";
+         var previousNum;
+      
+         for(let i=0;i<numBtn.length;i++)
+            numBtn[i].addEventListener("click",UpdateNumber);
          }
-         function pressnum()
+         function UpdateNumber( number)
          {
-            var num= this.innerHTML;
-            display.value=display.value+num;
+            var num=number.target.innerHTML;
+            currentNum = num;
+            Display.value+= currentNum;
          }
-         btn_clear.addEventListener("click",clearScreen);
-         function clearScreen()
+         clearBtn.addEventListener("click",clearAll);
+         function clearAll(){
+            currentNum = "";
+            previousNum =undefined;
+            Display.value=currentNum;
+         }
+         for(let i=0;i<operatorBtn.length;i++){
+            operatorBtn[i].addEventListener("click",performOperation);
+         }
+         function performOperation(operator)
          {
-            display.value="";
+            previousNum = currentNum;
+            currentNum = "";
+            var currentOperator = operator.target.innerHTML;
+            Display.value = currentNum;
          }
-         for(let i=0;i<current_op.length;i++)
-         {
-            const Op = current_op[i];
-            Op.addEventListener("click",operation);
-         }
-         function operation()
-         {
-            var prev_number = parseInt(display.value);
-            var operater=this.innerHTML;
-            display.value=display.value+operater;
-         }
+         decimalBtn.addEventListener("click",fun_decimal);
+         function fun_decimal(){
+           if(!Display.value.includes('.'))
+           Display.value = Display.value + '.';
+           currentNum = Display.value ;
+        }
          result.addEventListener("click",calculation); 
-         function calculation()
-         {
-            var current_number = parseInt(display.value);
-            var output;
-            switch(current_op)
+         function calculation(){
+            var compute;
+            const prev = parseInt(previousNum);
+            const curr = parseInt(currentNum);
+            switch(operatorBtn)
             {
-                case "+":
-                output = prev_number + current_number;
+                case '+':
+                compute = prev + curr;
                 break;
-                case "-":
-                output = prev_number - current_number;
+                case '-':
+                compute = prev - curr;
                 break;
-                case "/":
-                output = prev_number / current_number;
+                case '*':
+                compute = prev * curr;
                 break;
-                case "*":
-                output= prev_number * current_number;
-                break;
+                case '/':
+                compute = prev / curr;
+                break; 
             }
-            display.value = output;
-
-         }
+            currentNum = compute;
+            Display.value =currentNum ;
+            }
     </script>
 </body>
 </html>
